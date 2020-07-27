@@ -6,111 +6,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>React Sports Game</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- include an element for ReactDOM to attach our React-generated elements to -->
+    <div id="root"></div>
 
-    <div>
-        <h1>My Js game</h1>
-        <div id="reset-container">
+    <!-- include React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- include Babel standalone so we can process JSX in React.createElement stuff -->
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-            <button id="reset-button">RESET</button><br>
+    <!-- include our JS+JSX for the React Appliccation -->
+    <script type="text/babel">
 
-            Number Of Resets: <span id="num-resets">0</span>
+        // An App component under which all other components will be added
 
-        </div>
+        class Team extends React.Component {
+            constructor(props) {
+                super(props)
 
-        <div class="clear"></div>
-        <div class="left">
-            <h2>
-                Team 1
-            </h2>
-            <img src="teamToon.jpeg" alt="team toon" width="300" height="300">
-            <div class="goals">
-                Shots Taken:<span id="teamone-numshots">0</span><br>
-                Goals:<span id="teamone-numgoals">0</span>
-            </div>
+                this.state = {
+                    shots: 0,
+                    score: 0
+                }
+                this.shotSound = new Audio('Switch3.mp3')
+                this.shotSound = new Audio('basket.mp3')
 
-            <div>
-                <button id="teamone-shoot-button">Shoot</button>
+            }
+            shotHandler = () => {
+                let score = this.state.score
+                this.shotSound.play()
 
-            </div>
-        </div>
+                if (Math.random() > 0.5) {
+                    score += 2
+                    this.scoreSound.play()
+                }
 
-    </div>
-
-    <div class="right">
-        <h2>
-            Team 2
-        </h2>
-        <img src="teamMonster.jpeg" alt="team toon" width="300" height="300">
-
-        <div class="goals">
-            Shot Taken: <span id="teamtwo-numbershots">0</span>
-            Goals:<span id="teamtwo-numgoals">0</span>
-        </div>
-
-        <div>
-            <button id="teamtwo-shoot-button">Shoot</button>
-        </div>
-
-        <div class="clear"></div>
-        <script src="./assets/javascript/game.js"></script>
-
-
-
-
-
-
-        <!-- include an element for ReactDOM to attach our React-generated elements to -->
-        <div id="root"></div>
-
-        <!-- include React and ReactDOM -->
-        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-        <!-- include Babel standalone so we can process JSX in React.createElement stuff -->
-        <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-        <!-- include our JS+JSX for the React Appliccation -->
-
-        <script type="text/babel">
-
-            // An App component under which all other components will be added
-            function App(props) {
-                return (
-                    <div>
-                        <h1>Welcome to the Sports Game starter!</h1>
-                        <em>Everything you need to know <strong>Setup</strong> Let's meet our teams.</em>
-                    </div>
-                )
+                this.setState((state, props) => ({
+                    shots: state.shots + 2,
+                    score
+                }))
             }
 
 
+            render() {
+                let shotPercentageDiv
 
-            // Render the App
-            ReactDOM.render(
-                <App />,
-                document.getElementById('root')
+                if (this.state.shots) {
+                    const shotPercentage = this.state.score / this.state.shots
+                    shotPercentageDiv = (
+                        <div>
+                            <strong>Shooting %: {shotPercentage}</strong>
+                        </div>
+                    )
+                    
+
+                }
+                return (
+                    <div className="Team">
+                        <h1>{this.props.name}</h1>
+
+                        <div className="logo">
+                            <img src={this.props.logo} alt={this.props.name} width="400" height=" 400" />
+                        </div>
+
+
+                        <div>
+                            <button>
+                                <strong>
+                                    <em>Shots:</em>{this.state.shots}
+                                </strong>
+                            </button>
+                        </div>
+
+                        <br />
+
+                        <div>
+                            <button>
+                                <strong>
+                                    <em>Score :</em> {this.state.score}
+                                </strong>
+                            </button>
+                        </div>
+                        <br />
+
+                        <div>
+                            <strong>Shooting %: {shotPercentage}</strong>
+                        </div>
+
+                        {shotPercentageDiv}
+
+                        <button onClick={this.shotHandler}><em>Shoot !</em></button>
+                    </div>
+                )
+            }
+        }
+
+
+
+        function App(props) {
+            return (
+                <div className="app">
+
+                    <div className="stats">
+                        <Team name="Team Toon" logo="teamToon.jpeg" />
+
+                        <br />
+
+                        <div className="Versus">
+                            <h1>
+                                <strong>
+                                    <em> Vs!</em>
+                                </strong>
+                            </h1>
+                        </div>
+
+                        <br />
+
+                        <Team name="Team Monster" logo="teamMonster.jpeg" />
+
+                    </div>
+                </div>
+
+
             )
-
-            const element = React.createElement('h1', null, 'Team Toon');
-            
-            ReactDOM.render(
-                element,
-                document.getElementById('root')
-                
-                
-            );
-            
-        
-        </script>
+        }
 
 
-
-
-
+        // Render the App
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+    </script>
 </body>
 
 </html>
