@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,95 +9,108 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div>
-    <h1>My Js game</h1>
-    <div id="reset-container">
+    <div>
+        <h1>My Js game</h1>
+        <div id="reset-container">
 
-        <button id="reset-button">RESET</button><br>
+            <button id="reset-button">RESET</button><br>
 
-        Number Of Resets: <span id="num-resets">0</span>
+            Number Of Resets: <span id="num-resets">0</span>
+
+        </div>
+
+        <div class="clear"></div>
+        <div class="left">
+            <h2>
+                Team 1
+            </h2>
+            <img src="teamToon.jpeg" alt="team toon" width="300" height="300">
+            <div class="goals">
+                Shots Taken:<span id="teamone-numshots">0</span><br>
+                Goals:<span id="teamone-numgoals">0</span>
+            </div>
+
+            <div>
+                <button id="teamone-shoot-button">Shoot</button>
+
+            </div>
+        </div>
 
     </div>
 
-    <div class="clear"></div>
-    <div class="left">
+    <div class="right">
         <h2>
-            Team 1
+            Team 2
         </h2>
+        <img src="teamMonster.jpeg" alt="team toon" width="300" height="300">
 
         <div class="goals">
-            Shots Taken:<span id="teamone-numshots">0</span><br>
-            Goals:<span id="teamone-numgoals">0</span>
+            Shot Taken: <span id="teamtwo-numbershots">0</span>
+            Goals:<span id="teamtwo-numgoals">0</span>
         </div>
 
         <div>
-            <button id="teamone-shoot-button">Shoot</button>
-
+            <button id="teamtwo-shoot-button">Shoot</button>
         </div>
-    </div>
 
-</div>
-
-<div class="right">
-    <h2>
-        Team 2
-    </h2>
-
-    <div class="goals">
-        Shot Taken: <span id="teamtwo-numbershots">0</span>
-        Goals:<span id="teamtwo-numgoals">0</span>
-    </div>
-
-    <div>
-        <button id="teamtwo-shoot-button">Shoot</button>
-    </div>
-
-    <div class="clear"></div>
-    <script src="./assets/javascript/game.js"></script>
-
-
-   
-   
-   
-   
-    <!-- include an element for ReactDOM to attach our React-generated elements to -->
-    <div id="root"></div>
-
-    <!-- include React and ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <!-- include Babel standalone so we can process JSX in React.createElement stuff -->
-    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-    <!-- include our JS+JSX for the React Appliccation -->
-
-<script type="text/babel">
-
-// An App component under which all other components will be added
-function App (props) {
-  return (
-    <div>
-      <h1>Welcome to the Sports Game starter!</h1>
-      <em>This file represents the way your code should look after completing the <strong>Setup</strong> steps in the instructions.</em>
-    </div>
-  )
-}
+        <div class="clear"></div>
+        <script src="./assets/javascript/game.js"></script>
 
 
 
-// Render the App
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
 
-</script>
 
-<img src="teamToon.jpeg" alt="team toon" width="300" height="300">
+
+        <!-- include an element for ReactDOM to attach our React-generated elements to -->
+        <div id="root"></div>
+
+        <!-- include React and ReactDOM -->
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <!-- include Babel standalone so we can process JSX in React.createElement stuff -->
+        <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <!-- include our JS+JSX for the React Appliccation -->
+
+        <script type="text/babel">
+
+            // An App component under which all other components will be added
+            function App(props) {
+                return (
+                    <div>
+                        <h1>Welcome to the Sports Game starter!</h1>
+                        <em>Everything you need to know <strong>Setup</strong> Let's meet our teams.</em>
+                    </div>
+                )
+            }
+
+
+
+            // Render the App
+            ReactDOM.render(
+                <App />,
+                document.getElementById('root')
+            )
+
+            const element = React.createElement('h1', null, 'Team Toon');
+            
+            ReactDOM.render(
+                element,
+                document.getElementById('root')
+                
+                
+            );
+            
+        
+        </script>
+
+
 
 
 
 </body>
+
 </html>

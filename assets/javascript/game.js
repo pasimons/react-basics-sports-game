@@ -29,7 +29,7 @@ teamoneShootButton.addEventListener("click", function(){
 
 
     // Calculate the new value for our counter:
-   let newshotValue = Number(teamoneNumshots.innerHTML) +1; 
+   let newshotValue = Number(teamoneNumshots.innerHTML) +2; 
     teamoneNumshots.innerHTML = newshotValue;
     
     
@@ -58,7 +58,7 @@ teamtwoShootButton.addEventListener("click", function () {
     console.log(" team two  button clicked");
 
     // Calculate the new value for our counter:
-    let newshotValue = Number(teamtwoNumberShots.innerHTML) +1; 
+    let newshotValue = Number(teamtwoNumberShots.innerHTML) +2; 
     teamtwoNumberShots.innerHTML = newshotValue;
 
     // Calculate the new value for our counter:
