@@ -136,19 +136,19 @@
 
         function App(props) {
             const toon = {
-                name: 'Team Toon',
+                name: "toon",
                 logoSrc: 'teamToon.jpeg'
             }
-            const Monster = {
-                name: "Team Toon",
+            const monster = {
+                name: "monster",
                 logoSrc: 'teamMonster.jpeg'
             }
             const southPark = {
-                name: 'Southpark Cows',
+                name: 'southpark',
                 logoSrc: 'southparkcows.png'
             }
-            const meteorsMetropolis = {
-                name: "Meteors Metropolis",
+            const meteorMetropolis = {
+                name: "meteormetropolis",
                 logoSrc: 'superman.jpeg'
             }
 
@@ -158,14 +158,14 @@
 
                     <Game
                         venue="Union 525 Gem"
-                        homeTeam={Toons}
-                        visitingTeam={Monsters}
+                        homeTeam={toon} 
+                        visitingTeam={monster}
                     />
 
                     <Game
                         venue="The Tune Stadium"
-                        homeTeam={'Meteors Metropolis'}
-                        visitingTeam={'Southpark Cows'}
+                        homeTeam={meteorsMetropolis}
+                        visitingTeam={southPark}
                     />
                 </div>
 
