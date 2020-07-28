@@ -105,9 +105,9 @@
             }
         }
 
-        function Game(props) {
+        function Game (props) {
             return (
-                <div className="Game">
+                <div className= "Game">
                     <h1>Welcome to {props.venue}</h1>
                     <div className="stats">
                         <Team
@@ -144,11 +144,11 @@
                 logoSrc: 'teamMonster.jpeg'
             }
             const southPark = {
-                name: 'southpark',
+                name: 'southPark',
                 logoSrc: 'southparkcows.png'
             }
             const meteorMetropolis = {
-                name: "meteormetropolis",
+                name: "meteorMetropolis",
                 logoSrc: 'superman.jpeg'
             }
 
@@ -164,7 +164,7 @@
 
                     <Game
                         venue="The Tune Stadium"
-                        homeTeam={meteorsMetropolis}
+                        homeTeam={meteorMetropolis}
                         visitingTeam={southPark}
                     />
                 </div>
