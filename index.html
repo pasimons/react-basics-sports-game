@@ -33,7 +33,7 @@
                     score: 0
                 }
                 this.shotSound = new Audio('Switch3.mp3')
-                this.shotSound = new Audio('basket.mp3')
+                this.scoreSound = new Audio('basket.mp3')
 
             }
             shotHandler = () => {
@@ -105,12 +105,14 @@
             }
         }
 
-        function Game(props){
-return (
-    <div className ="Game">
-    <h1>Welcome to {props.venue}</h1>
-        <div className="stats">
-                        <Team name="Team Toon" logo="teamToon.jpeg" />
+        function Game(props) {
+            return (
+                <div className="Game">
+                    <h1>Welcome to {props.venue}</h1>
+                    <div className="stats">
+                        <Team
+                            name={props.visitingTeam.name}
+                            logo={props.visitingTeam.logoSrc} />
 
                         <br />
 
@@ -124,44 +126,47 @@ return (
 
                         <br />
 
-                        <Team name="Team Monster" logo="teamMonster.jpeg" />
+                        <Team name={props.homeTeam.name}
+                            logo={props.home.Team.logoSrc} />
 
                     </div>
-    </div>
-)
+                </div>
+            )
         }
 
-
-
         function App(props) {
-            const tune ={
+            const toon = {
+                name: 'Team Toon',
+                logoSrc: 'teamToon.jpeg'
+            }
+            const Monster = {
                 name: "Team Toon",
-                logoSrc:'teamToon.jpeg'
+                logoSrc: 'teamMonster.jpeg'
             }
-            const Monster ={
-                name: "Team Toon",
-                logoSrc:'teamMonster.jpeg'
+            const southPark = {
+                name: 'Southpark Cows',
+                logoSrc: 'southparkcows.png'
             }
-            const southPark ={
-                name:'South Park Cows',
-                logoSrc:'southparkcows.png'
-            }
-            const meteorsMetropolis ={
+            const meteorsMetropolis = {
                 name: "Meteors Metropolis",
-                logoSrc:'superman.jpeg'
+                logoSrc: 'superman.jpeg'
             }
 
 
             return (
                 <div className="app">
 
-                   <Game 
-                   venue="Union 525 Gem"
-                   homeTeam={Toons}
-                   visitingTeam={Monsters}
+                    <Game
+                        venue="Union 525 Gem"
+                        homeTeam={Toons}
+                        visitingTeam={Monsters}
                     />
-                  
-                   <Game venue="The Tune Stadium"/>
+
+                    <Game
+                        venue="The Tune Stadium"
+                        homeTeam={'Meteors Metropolis'}
+                        visitingTeam={'Southpark Cows'}
+                    />
                 </div>
 
 
