@@ -54,17 +54,17 @@
 
             render() {
                 let shotPercentageDiv
-
+                let shotPercentage = 0
                 if (this.state.shots) {
-                    const shotPercentage = this.state.score / this.state.shots
-                    shotPercentageDiv = (
-                        <div>
-                            <strong>Shooting %: {shotPercentage}</strong>
-                        </div>
-                    )
-                    
-
+                    shotPercentage = Math.round((this.state.score / this.state.shots) * 100)
                 }
+                shotPercentageDiv = (
+                    <div>
+                        <strong>Shooting %: {shotPercentage}</strong>
+                    </div>
+                )
+
+
                 return (
                     <div className="Team">
                         <h1>{this.props.name}</h1>
@@ -105,13 +105,11 @@
             }
         }
 
-
-
-        function App(props) {
-            return (
-                <div className="app">
-
-                    <div className="stats">
+        function Game(props){
+return (
+    <div className ="Game">
+    <h1>Welcome to {props.venue}</h1>
+        <div className="stats">
                         <Team name="Team Toon" logo="teamToon.jpeg" />
 
                         <br />
@@ -129,6 +127,41 @@
                         <Team name="Team Monster" logo="teamMonster.jpeg" />
 
                     </div>
+    </div>
+)
+        }
+
+
+
+        function App(props) {
+            const tune ={
+                name: "Team Toon",
+                logoSrc:'teamToon.jpeg'
+            }
+            const Monster ={
+                name: "Team Toon",
+                logoSrc:'teamMonster.jpeg'
+            }
+            const southPark ={
+                name:'South Park Cows',
+                logoSrc:'southparkcows.png'
+            }
+            const meteorsMetropolis ={
+                name: "Meteors Metropolis",
+                logoSrc:'superman.jpeg'
+            }
+
+
+            return (
+                <div className="app">
+
+                   <Game 
+                   venue="Union 525 Gem"
+                   homeTeam={Toons}
+                   visitingTeam={Monsters}
+                    />
+                  
+                   <Game venue="The Tune Stadium"/>
                 </div>
 
 
