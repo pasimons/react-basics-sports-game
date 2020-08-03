@@ -57,20 +57,20 @@
                 let shotPercentage = 0
                 if (this.state.shots) {
                     shotPercentage = Math.round((this.state.score / this.state.shots) * 100)
-                }
-                shotPercentageDiv = (
-                    <div>
-                        <strong>Shooting %: {shotPercentage}</strong>
-                    </div>
-                )
 
+                    shotPercentageDiv = (
+                        <div>
+                            <strong>Shooting %: {shotPercentage}</strong>
+                        </div>
+                    )
+                }
 
                 return (
                     <div className="Team">
                         <h1>{this.props.name}</h1>
 
                         <div className="logo">
-                            <img src={this.props.logo} alt={this.props.name} width="400" height=" 400" />
+                            <img src={this.props.logo} alt={this.props.name} />
                         </div>
 
 
@@ -93,9 +93,6 @@
                         </div>
                         <br />
 
-                        <div>
-                            <strong>Shooting %: {shotPercentage}</strong>
-                        </div>
 
                         {shotPercentageDiv}
 
@@ -105,9 +102,9 @@
             }
         }
 
-        function Game (props) {
+        function Game(props) {
             return (
-                <div className= "Game">
+                <div className="Game">
                     <h1>Welcome to {props.venue}</h1>
                     <div className="stats">
                         <Team
@@ -116,7 +113,7 @@
 
                         <br />
 
-                        <div className="Versus">
+                        <div className="versus">
                             <h1>
                                 <strong>
                                     <em> Vs!</em>
@@ -127,7 +124,7 @@
                         <br />
 
                         <Team name={props.homeTeam.name}
-                            logo={props.home.Team.logoSrc} />
+                            logo={props.homeTeam.logoSrc} />
 
                     </div>
                 </div>
@@ -154,11 +151,11 @@
 
 
             return (
-                <div className="app">
+                <div className="App">
 
                     <Game
                         venue="Union 525 Gem"
-                        homeTeam={toon} 
+                        homeTeam={toon}
                         visitingTeam={monster}
                     />
 
